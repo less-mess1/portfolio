@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bas | Portfolio</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/vscode.css" />
+</head>
+<body>
+
+  <!-- TITLE BAR -->
+  <div class="titlebar">
+    <div class="titlebar-left">
+      <span class="titlebar-icon">&#9632;</span>
+      <span class="titlebar-menus">
+        <span class="menu-item" data-menu="file">File</span>
+        <span class="menu-item" data-menu="edit">Edit</span>
+        <span class="menu-item" data-menu="view">View</span>
+        <span class="menu-item" data-menu="terminal">Terminal</span>
+        <span class="menu-item" data-menu="help">Help</span>
+      </span>
+    </div>
+    <div class="titlebar-center">Bas Dev — Portfolio — Visual Studio Code</div>
+    <div class="titlebar-right">
+      <span class="win-btn minimize">&#8722;</span>
+      <span class="win-btn maximize">&#9633;</span>
+      <span class="win-btn close">&#10005;</span>
+    </div>
+  </div>
+
+  <!-- DROPDOWN MENUS -->
+  <div class="dropdown" id="dropdown-file">
+    <div class="dropdown-item" data-action="open-about">📄 Open about.md</div>
+    <div class="dropdown-item" data-action="open-cv">📄 Open cv.md</div>
+    <div class="dropdown-separator"></div>
+    <div class="dropdown-item" data-action="download-cv">⬇️ Download CV (PDF)</div>
+    <div class="dropdown-separator"></div>
+    <div class="dropdown-item dropdown-dim">💾 Save &nbsp;<span class="kbd">Ctrl+S</span></div>
+    <div class="dropdown-item dropdown-dim">❌ Quit &nbsp;<span class="kbd">Alt+F4</span></div>
+  </div>
+
+  <div class="dropdown" id="dropdown-edit">
+    <div class="dropdown-item dropdown-dim">↩️ Undo &nbsp;<span class="kbd">Ctrl+Z</span></div>
+    <div class="dropdown-item dropdown-dim">↪️ Redo &nbsp;<span class="kbd">Ctrl+Y</span></div>
+    <div class="dropdown-separator"></div>
+    <div class="dropdown-item" data-action="toggle-theme">🌗 Toggle Light Mode</div>
+    <div class="dropdown-separator"></div>
+    <div class="dropdown-item" data-action="find">🔍 Find &nbsp;<span class="kbd">Ctrl+F</span></div>
+  </div>
+
+  <div class="dropdown" id="dropdown-view">
+    <div class="dropdown-item" data-action="toggle-sidebar">📂 Toggle Sidebar</div>
+    <div class="dropdown-item" data-action="toggle-terminal">⬛ Toggle Terminal</div>
+    <div class="dropdown-separator"></div>
+    <div class="dropdown-item" data-action="open-skills">📊 Skills Panel</div>
+    <div class="dropdown-item" data-action="open-projects">🗂️ Projects</div>
+  </div>
+
+  <div class="dropdown" id="dropdown-terminal">
+    <div class="dropdown-item" data-action="toggle-terminal">⬛ New Terminal</div>
+    <div class="dropdown-separator"></div>
+    <div class="dropdown-item dropdown-dim">▶ Run Task</div>
+    <div class="dropdown-item dropdown-dim">⚙️ Configure Tasks</div>
+  </div>
+
+  <div class="dropdown" id="dropdown-help">
+    <div class="dropdown-item" data-action="open-contact">✉️ Contact Bas</div>
+    <div class="dropdown-separator"></div>
+    <div class="dropdown-item" data-action="about-modal">ℹ️ Over deze portfolio</div>
+    <div class="dropdown-separator"></div>
+    <div class="dropdown-item dropdown-dim">🔑 Keyboard shortcuts &nbsp;<span class="kbd">Ctrl+K</span></div>
+  </div>
+
+  <!-- ABOUT MODAL -->
+  <div class="modal-overlay hidden" id="about-modal">
+    <div class="modal">
+      <div class="modal-title">Over deze portfolio</div>
+      <div class="modal-body">
+        <p>Versie: <span class="modal-accent">1.0.0</span></p>
+        <p>Gebouwd met: <span class="modal-accent">HTML, CSS, JS, PHP</span></p>
+        <p>Thema: <span class="modal-accent">Dark+ (default dark)</span></p>
+        <p>Developer: <span class="modal-accent">Bas Waaijer</span></p>
+        <br/>
+        <p class="modal-dim">© 2026 Bas Waaijer. All rights reserved.</p>
+      </div>
+      <button class="modal-close">Sluiten</button>
+    </div>
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <div class="vscode-layout">
+
+    <!-- ACTIVITY BAR (left icons) -->
+    <div class="activity-bar">
+      <div class="activity-icon active" data-panel="explorer" title="Explorer">&#128194;</div>
+      <div class="activity-icon" data-panel="search" title="Search">&#128269;</div>
+      <div class="activity-icon" data-panel="git" title="Skills">&#9733;</div>
+      <div class="activity-icon" data-panel="contact" title="Contact">&#9993;</div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-title">EXPLORER</div>
+      <div class="file-tree">
+        <div class="tree-folder open">
+          <span>&#128193; BAS_PORTFOLIO</span>
+        </div>
+        <div class="tree-files">
+          <div class="tree-file active" data-file="about">&#128196; about.md</div>
+          <div class="tree-file" data-file="projects">&#128196; projects.json</div>
+          <div class="tree-file" data-file="skills">&#128196; skills.js</div>
+          <div class="tree-file" data-file="cv">&#128196; cv.md</div>
+          <div class="tree-file" data-file="contact">&#128196; contact.html</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDITOR AREA -->
+    <div class="editor-area">
+
+      <!-- TABS -->
+      <div class="tabs-bar"></div>
+
+      <!-- WELCOME SCREEN -->
+      <div class="welcome-screen" id="welcome-screen">
+        <div class="welcome-inner">
+          <div class="welcome-logo">&#128187;</div>
+          <h1 class="welcome-title">Bas <span>Waaijer</span></h1>
+          <p class="welcome-sub">Software Developer — Visual Studio Code Portfolio</p>
+
+          <div class="welcome-grid">
+            <div class="welcome-section">
+              <p class="welcome-section-title">Bestanden</p>
+              <div class="welcome-shortcuts">
+                <div class="shortcut-item" data-file="about">&#128196; about.md</div>
+                <div class="shortcut-item" data-file="projects">&#128196; projects.json</div>
+                <div class="shortcut-item" data-file="skills">&#128196; skills.js</div>
+                <div class="shortcut-item" data-file="cv">&#128196; cv.md</div>
+                <div class="shortcut-item" data-file="contact">&#128196; contact.html</div>
+              </div>
+            </div>
+
+            <div class="welcome-section">
+              <p class="welcome-section-title">Projecten</p>
+              <div class="welcome-shortcuts">
+                <a class="shortcut-item shortcut-link" href="https://github.com/less-mess1" target="_blank" rel="noopener">🐙 GitHub — less-mess1</a>
+                <a class="shortcut-item shortcut-link" href="https://www.linkedin.com/in/bas-waaijer-118045351/" target="_blank" rel="noopener">💼 LinkedIn</a>
+                <a class="shortcut-item shortcut-link" href="mailto:baswaaijer7@gmail.com">📧 baswaaijer7@gmail.com</a>
+              </div>
+            </div>
+          </div>
+
+          <p class="welcome-hint">Open een bestand via de sidebar of klik hierboven</p>
+        </div>
+      </div>
+
+      <!-- FIND BAR -->
+      <div class="find-bar hidden" id="find-bar">
+        <div class="find-inner">
+          <input type="text" id="find-input" placeholder="Zoeken..." autocomplete="off" spellcheck="false" />
+          <span class="find-count" id="find-count"></span>
+          <button class="find-btn" id="find-prev" title="Vorige">&#8593;</button>
+          <button class="find-btn" id="find-next" title="Volgende">&#8595;</button>
+          <button class="find-btn find-close-btn" id="find-close" title="Sluiten">&#10005;</button>
+        </div>
+      </div>
+
+      <!-- FILE CONTENT PANELS -->
+      <div class="editor-content">
+
+        <!-- ABOUT -->
+        <div class="file-panel active" id="panel-about">
+          <div class="line-numbers" id="ln-about"></div>
+          <div class="code-content">
+            <pre><span class="md-h1"># 👋 Wie ben ik?</span>
+
+<span class="md-text">Ik ben <span class="md-bold">Bas Waaijer</span>, een 19-jarige software developer uit het Westland.</span>
+<span class="md-text">Iemand die graag bezig is met technologie, maar vooral met dingen zelf</span>
+<span class="md-text">bouwen en uitzoeken hoe ze werken. Ik leer het liefst door gewoon te</span>
+<span class="md-text">beginnen, tegen problemen aan te lopen en ze vervolgens op te lossen.</span>
+<span class="md-text"></span>
+<span class="md-text">Naast programmeren ben ik behoorlijk sociaal en ben ik graag met vrienden.</span>
+<span class="md-text">Ik houd ervan om nieuwe dingen te proberen, op pad te gaan en natuurlijk</span>
+<span class="md-text">af en toe gewoon een goed feestje mee te pakken.</span>
+
+<span class="md-divider">─────────────────────────────────────────</span>
+
+<span class="md-h2">## 🎯 Hobby's</span>
+<span class="md-text"></span>
+<span class="md-text">  💻  Programmeren &amp; nieuwe technologie ontdekken</span>
+<span class="md-text">  🏸  Badminton</span>
+<span class="md-text">  🏋️  Fitness / gym</span>
+<span class="md-text">  🎵  Hardstyle, hardcore, techno &amp; andere stevige muziek</span>
+<span class="md-text">  🌍  Reizen en nieuwe plekken ontdekken</span>
+<span class="md-text">  👥  Tijd doorbrengen met vrienden</span>
+<span class="md-text">  🎮  Af en toe gamen</span>
+<span class="md-text">  🧠  Nieuwe technische dingen uitzoeken en ermee experimenteren</span>
+
+<span class="md-divider">─────────────────────────────────────────</span>
+
+<span class="md-h2">## 💻 Wat doe ik?</span>
+<span class="md-text"></span>
+<span class="md-text">Ik ben inmiddels afgestudeerd van het <span class="md-bold">Grafisch Lyceum Rotterdam</span> en werk</span>
+<span class="md-text">bij <span class="md-bold">TreeHouse</span>, waar ik eerder stage heb gelopen.</span>
+<span class="md-text"></span>
+<span class="md-text">Mijn werk ligt vooral binnen software development en automatisering.</span>
+<span class="md-text">Ik heb veel gewerkt aan systemen die informatie van websites verzamelen</span>
+<span class="md-text">en verwerken.</span>
+<span class="md-text"></span>
+<span class="md-text">  > "Hoe krijg ik deze website zover dat mijn code precies doet wat ik wil?"</span>
+<span class="md-text"></span>
+<span class="md-text">Ik ben daarnaast steeds meer geïnteresseerd geraakt in <span class="md-bold">AI</span>, <span class="md-bold">cybersecurity</span></span>
+<span class="md-text">en bredere software development.</span>
+
+<span class="md-h3">### Tech stack</span>
+<span class="md-text"></span>
+<span class="md-text">  PHP          HTML / CSS / JavaScript    MySQL</span>
+<span class="md-text">  Git &amp; GitHub  Docker                     Linux / Ubuntu</span>
+<span class="md-text">  Symfony      Guzzle                     Web scraping</span>
+<span class="md-text">  XPath        API's                      Dataverwerking</span>
+<span class="md-text">  Automatisering                          AI-development tools</span>
+
+<span class="md-divider">─────────────────────────────────────────</span>
+
+<span class="md-h2">## 🤓 Fun facts</span>
+<span class="md-text"></span>
+<span class="md-text">  🇳🇱  Ik kom uit het Westland.</span>
+<span class="md-text">  🏸  Ik speel badminton en heb een tijdje tussen verschillende groepen gespeeld.</span>
+<span class="md-text">  💻  Ik kan rustig uren bezig zijn met één irritant programmeerprobleem</span>
+<span class="md-text">      totdat ik hem eindelijk heb opgelost.</span>
+<span class="md-text">  🎧  Mijn muzieksmaak kan nogal extreem zijn: van normaal naar Rooler/Sefa.</span>
+<span class="md-text">  🌊  Ik heb in Portugal leren surfen/bodyboarden en zou zo weer teruggaan.</span>
+<span class="md-text">  🍽️  Tijdens mijn Portugal-trip voor het eerst octopus gegeten — en vond</span>
+<span class="md-text">      het nog lekker ook.</span>
+<span class="md-text">  🧠  Ik leer technische dingen liever door ze daadwerkelijk te bouwen</span>
+<span class="md-text">      dan door alleen theorie te lezen.</span>
+<span class="md-text">  🛠️  Mijn projecten ontstaan vaak vanuit: "Hmm, kan dit eigenlijk ook gewoon?"</span>
+<span class="md-text">  🤖  Ik ben behoorlijk geïnteresseerd in hoe AI mijn manier van</span>
+<span class="md-text">      programmeren kan veranderen.</span>
+<span class="md-text">  🚀  Ik ben nog lang niet klaar met ontdekken welke kant ik uiteindelijk</span>
+<span class="md-text">      op wil binnen ICT.</span>
+</pre>
+          </div>
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="file-panel" id="panel-projects">
+          <div class="line-numbers" id="ln-projects"></div>
+          <div class="code-content">
+            <pre><span class="json-brace">{</span>
+  <span class="json-key">"projects"</span><span class="json-colon">:</span> <span class="json-brace">[</span>
+    <span class="json-brace">{</span>
+      <span class="json-key">"name"</span><span class="json-colon">:</span> <span class="json-str">"Portfolio"</span><span class="json-comma">,</span>
+      <span class="json-key">"description"</span><span class="json-colon">:</span> <span class="json-str">"Een portfolio gemaakt op een leuke interactieve manier"</span><span class="json-comma">,</span>
+      <span class="json-key">"tech"</span><span class="json-colon">:</span> <span class="json-brace">[</span><span class="json-str">"HTML"</span><span class="json-comma">,</span> <span class="json-str">"CSS"</span><span class="json-comma">,</span> <span class="json-str">"JS"</span>,</span> <span class="json-str">"PHP"</span><span class="json-brace">]</span><span class="json-comma">,</span>
+      <span class="json-key">"url"</span><span class="json-colon">:</span> <span class="json-str">"https://github.com/bas"</span>
+    <span class="json-brace">}</span><span class="json-comma">,</span>
+  <span class="json-brace">]</span>
+<span class="json-brace">}</span>
+</pre>
+          </div>
+        </div>
+
+        <!-- SKILLS -->
+        <div class="file-panel" id="panel-skills">
+          <div class="line-numbers" id="ln-skills"></div>
+          <div class="code-content">
+            <pre><span class="js-comment">// skills.js — Bas zijn technische skills</span>
+
+<span class="js-keyword">const</span> <span class="js-var">skills</span> <span class="js-op">=</span> <span class="js-brace">{</span>
+  <span class="js-key">frontend</span><span class="js-colon">:</span> <span class="js-brace">[</span>
+    <span class="js-brace">{</span> <span class="js-key">name</span><span class="js-colon">:</span> <span class="js-str">"HTML/CSS"</span><span class="js-comma">,</span>    <span class="js-key">level</span><span class="js-colon">:</span> <span class="js-num">75</span> <span class="js-brace">}</span><span class="js-comma">,</span>
+    <span class="js-brace">{</span> <span class="js-key">name</span><span class="js-colon">:</span> <span class="js-str">"JavaScript"</span><span class="js-comma">,</span>  <span class="js-key">level</span><span class="js-colon">:</span> <span class="js-num">70</span> <span class="js-brace">}</span><span class="js-comma">,</span>
+    <span class="js-brace">{</span> <span class="js-key">name</span><span class="js-colon">:</span> <span class="js-str">"React"</span><span class="js-comma">,</span>       <span class="js-key">level</span><span class="js-colon">:</span> <span class="js-num">85</span> <span class="js-brace">}</span>
+  <span class="js-brace">]</span><span class="js-comma">,</span>
+  <span class="js-key">backend</span><span class="js-colon">:</span> <span class="js-brace">[</span>
+    <span class="js-brace">{</span> <span class="js-key">name</span><span class="js-colon">:</span> <span class="js-str">"PHP"</span><span class="js-comma">,</span>          <span class="js-key">level</span><span class="js-colon">:</span> <span class="js-num">90</span> <span class="js-brace">}</span><span class="js-comma">,</span>
+    <span class="js-brace">{</span> <span class="js-key">name</span><span class="js-colon">:</span> <span class="js-str">"Node.js"</span><span class="js-comma">,</span>     <span class="js-key">level</span><span class="js-colon">:</span> <span class="js-num">70</span> <span class="js-brace">}</span><span class="js-comma">,</span>
+    <span class="js-brace">{</span> <span class="js-key">name</span><span class="js-colon">:</span> <span class="js-str">"MySQL"</span><span class="js-comma">,</span>       <span class="js-key">level</span><span class="js-colon">:</span> <span class="js-num">75</span> <span class="js-brace">}</span><span class="js-comma">,</span>
+    <span class="js-brace">{</span> <span class="js-key">name</span><span class="js-colon">:</span> <span class="js-str">"Symfony"</span><span class="js-comma">,</span>     <span class="js-key">level</span><span class="js-colon">:</span> <span class="js-num">65</span> <span class="js-brace">}</span><span class="js-comma">,</span>
+    <span class="js-brace">{</span> <span class="js-key">name</span><span class="js-colon">:</span> <span class="js-str">"XPath"</span><span class="js-comma">,</span>       <span class="js-key">level</span><span class="js-colon">:</span> <span class="js-num">95</span> <span class="js-brace">}</span><span class="js-comma">,</span>
+    <span class="js-brace">{</span> <span class="js-key">name</span><span class="js-colon">:</span> <span class="js-str">"API's"</span><span class="js-comma">,</span>       <span class="js-key">level</span><span class="js-colon">:</span> <span class="js-num">65</span> <span class="js-brace">}</span><span class="js-comma">,</span>
+    <span class="js-brace">{</span> <span class="js-key">name</span><span class="js-colon">:</span> <span class="js-str">"Dataverwerking"</span><span class="js-comma">,</span><span class="js-key">level</span><span class="js-colon">:</span> <span class="js-num">60</span> <span class="js-brace">}</span>
+  <span class="js-brace">]</span><span class="js-comma">,</span>
+  <span class="js-key">tools</span><span class="js-colon">:</span> <span class="js-brace">[</span>
+    <span class="js-brace">{</span> <span class="js-key">name</span><span class="js-colon">:</span> <span class="js-str">"Git"</span><span class="js-comma">,</span>          <span class="js-key">level</span><span class="js-colon">:</span> <span class="js-num">50</span> <span class="js-brace">}</span><span class="js-comma">,</span>
+    <span class="js-brace">{</span> <span class="js-key">name</span><span class="js-colon">:</span> <span class="js-str">"VS Code"</span><span class="js-comma">,</span>     <span class="js-key">level</span><span class="js-colon">:</span> <span class="js-num">80</span> <span class="js-brace">}</span><span class="js-comma">,</span>
+    <span class="js-brace">{</span> <span class="js-key">name</span><span class="js-colon">:</span> <span class="js-str">"Linux / Ubuntu"</span><span class="js-comma">,</span><span class="js-key">level</span><span class="js-colon">:</span> <span class="js-num">60</span> <span class="js-brace">}</span>
+  <span class="js-brace">]</span><span class="js-comma">,</span>
+  <span class="js-key">ai</span><span class="js-colon">:</span> <span class="js-brace">[</span>
+    <span class="js-brace">{</span> <span class="js-key">name</span><span class="js-colon">:</span> <span class="js-str">"AI-development tools"</span><span class="js-comma">,</span> <span class="js-key">level</span><span class="js-colon">:</span> <span class="js-num">80</span> <span class="js-brace">}</span>
+  <span class="js-brace">]</span>
+<span class="js-brace">}</span><span class="js-semi">;</span>
+
+<span class="js-comment">// Render skill bars hieronder ⬇</span>
+</pre>
+            <!-- Skill bars rendered by JS -->
+            <div id="skill-bars"></div>
+          </div>
+        </div>
+
+        <!-- CV -->
+        <div class="file-panel" id="panel-cv">
+          <div class="line-numbers" id="ln-cv"></div>
+          <div class="code-content">
+            <pre><span class="md-h1"># Curriculum Vitae — Bas Waaijer</span>
+
+<span class="md-divider">─────────────────────────────────────────</span>
+
+<span class="md-h2">## Persoonlijke Informatie</span>
+<span class="md-text"></span>
+<span class="md-text">  Email      baswaaijer7@gmail.com</span>
+<span class="md-text">  Telefoon   +06 38481925</span>
+<span class="md-text">  Locatie    's-Gravenzande, Nederland</span>
+
+<span class="md-divider">─────────────────────────────────────────</span>
+
+<span class="md-h2">## Opleiding</span>
+<span class="md-text"></span>
+<span class="md-text">  Creative Software Developer — Geslaagd</span>
+<span class="md-text">  Grafisch Lyceum Rotterdam</span>
+
+<span class="md-divider">─────────────────────────────────────────</span>
+
+<span class="md-h2">## Werkervaring</span>
+<span class="md-text"></span>
+<span class="md-h3">### Scraper — TreeHouse Rotterdam  ·  2026 – huidig</span>
+<span class="md-text">  - Verzamelen van huurwoning-informatie via XPaths</span>
+<span class="md-text">  - Monitoren en oplossen van bugs</span>
+<span class="md-text">  - Samenwerking met andere teams</span>
+<span class="md-text"></span>
+<span class="md-h3">### Medewerker AGF — Hoogvliet 's-Gravenzande  ·  2022 – 2026</span>
+<span class="md-text">  - Zelfstandig beheer van de AGF-afdeling</span>
+<span class="md-text">  - Werken met verse producten en voorraadbeheer</span>
+<span class="md-text"></span>
+<span class="md-h3">### Autowasser — Westland Autoschade  ·  2019 – 2022</span>
+<span class="md-text">  - Wassen en onderhoud van voertuigen</span>
+<span class="md-text">  - Afdelingsbeheer onder tijdsdruk</span>
+
+<span class="md-divider">─────────────────────────────────────────</span>
+
+<span class="md-h2">## Skills</span>
+<span class="md-text"></span>
+<span class="md-text">  PHP                    XPath</span>
+<span class="md-text">  HTML / CSS             JavaScript</span>
+<span class="md-text">  React                  Node.js</span>
+<span class="md-text">  MySQL                  Symfony</span>
+<span class="md-text">  Git &amp; GitHub           Docker</span>
+<span class="md-text">  Linux / Ubuntu         Figma</span>
+<span class="md-text">  API's                  Dataverwerking</span>
+<span class="md-text">  Automatisering         AI-development tools</span>
+<span class="md-text">  Animations             Web scraping</span>
+
+<span class="md-divider">─────────────────────────────────────────</span>
+
+<span class="md-h2">## Talen</span>
+<span class="md-text"></span>
+<span class="md-text">  Nederlands   Vloeiend</span>
+<span class="md-text">  Engels       Vloeiend</span>
+</pre>
+          </div>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="file-panel" id="panel-contact">
+          <div class="line-numbers" id="ln-contact"></div>
+          <div class="code-content contact-code">
+            <pre><span class="html-tag">&lt;!-- contact.html --&gt;</span>
+
+<span class="js-comment">&lt;!-- Direct contact --&gt;</span>
+<span class="html-tag">&lt;div</span> <span class="html-attr">class</span><span class="html-eq">=</span><span class="html-str">"contact-info"</span><span class="html-tag">&gt;</span>
+</pre>
+            <div class="contact-info-wrapper">
+              <a href="mailto:baswaaijer7@gmail.com" class="contact-link">
+                <span class="contact-icon">📧</span>
+                <span>baswaaijer7@gmail.com</span>
+              </a>
+              <a href="tel:+31638481925" class="contact-link">
+                <span class="contact-icon">📱</span>
+                <span>+06 38481925</span>
+              </a>
+              <a href="https://github.com/less-mess1" target="_blank" rel="noopener" class="contact-link">
+                <span class="contact-icon">🐙</span>
+                <span>github.com/less-mess1</span>
+              </a>
+              <a href="https://www.linkedin.com/in/bas-waaijer-118045351/" target="_blank" rel="noopener" class="contact-link">
+                <span class="contact-icon">💼</span>
+                <span>linkedin.com/in/bas-waaijer-118045351</span>
+              </a>
+              <p class="contact-terminal-hint">💡 Tip: typ <code>contact</code> in de terminal voor een overzicht</p>
+            </div>
+            <pre><span class="html-tag">&lt;/div&gt;</span>
+
+<span class="js-comment">&lt;!-- Of stuur een bericht --&gt;</span>
+<span class="html-tag">&lt;form</span> <span class="html-attr">id</span><span class="html-eq">=</span><span class="html-str">"contactForm"</span><span class="html-tag">&gt;</span>
+</pre>
+            <div class="contact-form-wrapper">
+              <form id="contactForm">
+                <div class="form-group">
+                  <label for="name"><span class="html-tag">&lt;label&gt;</span> Naam</label>
+                  <input type="text" id="name" name="name" placeholder="Jouw naam..." required />
+                </div>
+                <div class="form-group">
+                  <label for="email"><span class="html-tag">&lt;label&gt;</span> Email</label>
+                  <input type="email" id="email" name="email" placeholder="jouw@email.nl" required />
+                </div>
+                <div class="form-group">
+                  <label for="message"><span class="html-tag">&lt;label&gt;</span> Bericht</label>
+                  <textarea id="message" name="message" rows="5" placeholder="Schrijf hier je bericht..." required></textarea>
+                </div>
+                <button type="submit" class="btn-send">&#9658; Verstuur bericht</button>
+                <div id="form-feedback"></div>
+              </form>
+            </div>
+            <pre><span class="html-tag">&lt;/form&gt;</span></pre>
+          </div>
+        </div>
+
+      </div><!-- end editor-content -->
+
+      <!-- TERMINAL -->
+      <div class="terminal-panel hidden" id="terminal-panel">
+        <div class="terminal-header">
+          <span class="terminal-title">TERMINAL</span>
+          <span class="terminal-tabs"><span class="terminal-tab active">bas@portfolio: ~</span></span>
+          <span class="terminal-close" id="terminal-close">&#10005;</span>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+          <div class="terminal-line"><span class="t-prompt">bas@portfolio:~$</span> <span class="t-dim">type a command and press Enter...</span></div>
+        </div>
+        <div class="terminal-input-row">
+          <span class="t-prompt">bas@portfolio:~$</span>
+          <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" placeholder="help" />
+        </div>
+      </div>
+
+      <!-- STATUS BAR -->
+      <div class="status-bar">
+        <span class="status-left">&#9711; main &nbsp; &#10003; 0 &nbsp; &#9651; 0</span>
+        <span class="status-file" id="status-file">about.md</span>
+        <span class="status-right">Markdown &nbsp; UTF-8 &nbsp; Bas Portfolio v1.0</span>
+      </div>
+
+    </div><!-- end editor-area -->
+  </div><!-- end vscode-layout -->
+
+  <script src="js/app.js"></script>
+</body>
+</html>

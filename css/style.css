@@ -1,0 +1,33 @@
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:         #1e1e1e;
+  --sidebar-bg: #252526;
+  --activity-bg:#333333;
+  --tab-bg:     #2d2d2d;
+  --tab-active: #1e1e1e;
+  --border:     #3c3c3c;
+  --text:       #d4d4d4;
+  --text-dim:   #858585;
+  --accent:     #007acc;
+  --accent2:    #0e639c;
+  --titlebar:   #323233;
+  --statusbar:  #007acc;
+  --font-mono:  'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+  --font-ui:    'Segoe UI', sans-serif;
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  overflow: hidden;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #555; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #777; }
