@@ -25,7 +25,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 // Jouw e-mailadres
-$to      = "jouw@emailadres.nl";
+$to      = "baswaaijer7@gmail.com";
 $subject = "Portfolio Contact: " . $name;
 $body    = "Naam: $name\nEmail: $email\n\nBericht:\n$message";
 $headers = "From: noreply@jouwdomain.nl\r\nReply-To: $email";
